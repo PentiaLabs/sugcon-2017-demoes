@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 Remove-Item .\sitecore\* -Force
 Remove-Item .\project\* -Force
 
