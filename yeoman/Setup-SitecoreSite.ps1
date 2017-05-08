@@ -3,13 +3,13 @@ $ErrorActionPreference = "Stop"
 Write-Verbose -Message "Remove sitecore folder if it exists"
 if(Test-Path ".\sitecore")
 {
-	Remove-Item .\sitecore\* -Force -Verbose
+	Remove-Item .\sitecore\* -Force -Recurse
 }
 
 Write-Verbose -Message "Remove project folder if it exists"
 if(Test-Path ".\project")
 {
-	Remove-Item .\project\* -Force -Verbose
+	Remove-Item .\project\* -Force -Recurse
 }
 
 
@@ -22,7 +22,7 @@ if(-not (Test-path $sitecorePackagePath))
 }
 
 Write-Verbose -Message "Extract sitecore package to .\Sitecore"
-Expand-Archive -Path $sitecorePackagePath -DestinationPath .\Sitecore -Verbose
+Expand-Archive -Path $sitecorePackagePath -DestinationPath .\Sitecore
 
 #Download nuget.exe and package sitecore in a nuget package
 Write-Verbose -Message "Downloading nuget.exe"
