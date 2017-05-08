@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 Remove-Item .\sitecore\* -Force
 Remove-Item .\project\* -Force
 
-#Path to your sitecore zip with the full Sitecore
+#Path to your sitecore zip with the full Sitecore download from here: https://dev.sitecore.net/~/media/203A8170D4664A41A8900E7AFEFC803F.ashx 
 $sitecorePackagePath = '.\Sitecore 8.2 rev. 170407.zip'
 
 if(-not (Test-path $sitecorePackagePath))
