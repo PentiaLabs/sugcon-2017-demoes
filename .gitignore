@@ -250,3 +250,9 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+#Demo folders
+yeoman/[Ss]itecore
+yeoman/[Pp]roject
+yeoman/nuget.exe
+yeoman/Sitecore 8.2 rev. 170407.zip

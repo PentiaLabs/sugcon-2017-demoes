@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Sitecore.Full</id>
+    <version>8.2.170407</version>
+    <authors>Pentia</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Full Sitecore Webroot</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>Sitecore Full</tags>
+  </metadata>
+  <files>
+    <file src=".\sitecore\Sitecore 8.2 rev. 170407\Website\**\*" target="webroot" />
+    <file src=".\sitecore\Sitecore 8.2 rev. 170407\Data\**\*" target="data" />
+  </files>
+</package>
