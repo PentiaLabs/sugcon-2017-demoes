@@ -1,4 +1,6 @@
 $ErrorActionPreference = "Stop"
+$oldPreference = $VerbosePreference
+$VerbosePreference = "continue"
 
 Write-Verbose -Message "Remove sitecore folder if it exists"
 if(Test-Path ".\sitecore")
@@ -11,7 +13,16 @@ if(Test-Path ".\project")
 {
 	Remove-Item .\project\* -Force -Recurse
 }
+else
+{
+	New-Item -ItemType Directory -Path project
+}
 
+Write-Verbose -Message "Remove nuget.exe"
+if(Test-Path ".\nuget.exe")
+{
+	Remove-Item nuget.exe -Force
+}
 
 #Path to your sitecore zip with the full Sitecore download from here: https://dev.sitecore.net/~/media/203A8170D4664A41A8900E7AFEFC803F.ashx 
 $sitecorePackagePath = '.\Sitecore 8.2 rev. 170407.zip'
@@ -32,11 +43,15 @@ Invoke-WebRequest -Uri $nugetUrl -OutFile .\nuget.exe -Verbose
 
 #create project folder and sitecore solution
 Write-Verbose -Message "Create project folder and run the helix generator"
-mkdir project 
 Set-Location project
+#install yeoman 'npm install -g yo'
+#install helix generator 'npm install generator-helix -g'
 yo helix pentiahelix SUGCON.2017
+
+#attach databases
+Set-Location ..\
+& ".\AttachDatabases.ps1"
 
 #set configuration files in project
 
-
-
+$VerbosePreference = $oldPreference
