@@ -5,6 +5,12 @@ Building your first container
 To build a container create a dockerfile.
 [Dockerfile documentation](https://docs.docker.com/get-started/part2/#dockerfile)
 
+- Layers
+- Commands
+- Volumes
+- Entrypoints
+
+
 ```sh
 docker build . -t demo-mongo-container:latest
 ````

@@ -2,6 +2,7 @@
 Getting to know the basic docker commands
 [Docker documentation](https://docs.docker.com/)
 
+
 ## Basic Docker Commands
 List running containers
 ```sh
@@ -39,3 +40,7 @@ Remove a Container
 ```sh
 docker rm sugcon-demo-1
 ```
+
+## Gotchas running windows contaiers
+
+- Natting Ip vs local ip on linux
