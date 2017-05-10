@@ -1,0 +1,48 @@
+version: '2.1'
+
+services:
+ db:
+  image: microsoft/mssql-server-2016-express-windows
+  volumes:
+   - .\Databases:C:\Data
+  ports:
+   - "1433"
+  expose:
+   - "1433" 
+  environment:
+   sa_password: Sitecore+Docker=Socker!
+   attach_dbs: "[{'dbName':'Sitecore_Core','dbFiles':['C:\\\\Data\\\\Sitecore.Core.mdf','C:\\\\Data\\\\Sitecore.Core.ldf']},{'dbName':'Sitecore_Master','dbFiles':['C:\\\\Data\\\\Sitecore.Master.mdf', 'C:\\\\Data\\\\Sitecore.Master.ldf']},{'dbName': 'Sitecore_Web', 'dbFiles': ['C:\\\\Data\\\\Sitecore.Web.mdf','C:\\\\Data\\\\Sitecore.Web.ldf']},{'dbName':'Sitecore_Analytics','dbFiles':['C:\\\\Data\\\\Sitecore.Analytics.mdf','C:\\\\Data\\\\Sitecore.Analytics.ldf']}]"   
+  mem_limit: 4096m
+   
+ mongo:
+  image: istern/windows-mongo
+  ports:
+   - "27017"
+  expose:
+   - "27017"
+  volumes:
+   - .\mongo:C:\data
+   - .\mongo:C:\logs
+  mem_limit: 2048m
+   
+ web:
+  image: istern/iis-sitecore-base-changeconfig
+  volumes:
+   - .\Data:C:\Websites\Data
+   - .\Website:C:\Websites\Website 
+  links:
+   - db
+   - mongo
+  environment:
+   user: sa
+   password: Sitecore+Docker=Socker!
+   server: db
+   mongoserver: mongo
+  ports:
+   - "80"
+  mem_limit: 2048m
+
+networks:
+ default:
+  external:
+   name: "nat"
