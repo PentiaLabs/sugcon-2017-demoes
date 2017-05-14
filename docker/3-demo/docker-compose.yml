@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
  db:
-  image: microsoft/mssql-server-2016-express-windows
+  image: microsoft/mssql-server-windows-express
   volumes:
    - .\Databases:C:\Data
   ports:
