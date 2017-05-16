@@ -80,4 +80,8 @@ if(-not (Get-Content -Path $file -Raw).Contains($hostName))
 #set configuration files in project
 copy-item -Recurse $PSScriptRoot\project_files\* $PSScriptRoot\project\ -Force
 
+Set-Location $PSScriptRoot\project
+npm install
+gulp setup
+
 $VerbosePreference = $oldPreference

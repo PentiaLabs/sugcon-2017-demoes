@@ -25,6 +25,10 @@ copy-item -Recurse .\project_files\* .\project\ -Force
 gulp setup
 ```
 
+## show site 
+local.sugcon-demo.nl
+
+
 
 
 
