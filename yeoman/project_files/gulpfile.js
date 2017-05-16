@@ -27,5 +27,5 @@ gulp.task('delete-website', function(callback) {
 });
 
 gulp.task('copy-license', function() {
-	fs.copy('C:\license\license.xml', 'C:\\websites\\sugcon.local\\Website\\Data\\license.xml');
+	fs.copy('C:\\license\\license.xml', 'C:\\websites\\sugcon.local\\Website\\Data\\license.xml');
 });
