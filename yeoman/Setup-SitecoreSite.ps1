@@ -78,10 +78,12 @@ if(-not (Get-Content -Path $file -Raw).Contains($hostName))
 }
 
 #set configuration files in project
-copy-item -Recurse $PSScriptRoot\project_files\* $PSScriptRoot\project\ -Force
+copy-item -Recurse $PSScriptRoot\project_files\* $PSScriptRoot\project\ -Forcec:.\AttachDatabases.ps1
 
 Set-Location $PSScriptRoot\project
 npm install
+& "$PSScriptRoot\nuget.exe" restore
+& "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe"
 gulp setup
 
 $VerbosePreference = $oldPreference
