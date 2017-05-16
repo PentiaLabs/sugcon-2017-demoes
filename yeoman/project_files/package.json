@@ -1,0 +1,22 @@
+{
+  "name": "SUGCON.2017",
+  "version": "1.0.0",
+  "description": "Helix solution SUGCON.2017",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "rimraf": "2.6.0",
+    "fs-extra": "2.0.0",
+    "frontend-builder": "3.3.5",
+    "@pentia/publish-projects": "0.1.12",
+    "@pentia/sitecore-package-manager": "0.1.9",
+    "@pentia/configuration-transformer": "0.1.8",
+    "@pentia/watch-publish-projects": "0.1.1",
+    "gulp": "3.9.1",
+    "run-sequence": "1.2.2"
+  },
+  "devDependencies": { },
+  "scripts": {
+    "frontend": "frontend-builder"
+  },
+  "author": "SUGCON.2017"
+}

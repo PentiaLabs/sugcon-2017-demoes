@@ -1,0 +1,19 @@
+{
+    "configurationTransform": {
+      "AlwaysApplyName": "always"
+    },
+    "msbuild": {
+      "showError": false,
+      "showStandardOutput": false,
+      "toolsversion": 14.0,
+      "verbosity": "minimal"
+    },
+    "configs": [
+      {
+        "name": "debug",
+        "rootFolder": "C:\\websites\\sugcon.local",
+        "websiteRoot" :"C:\\websites\\sugcon.local\\Website",
+        "websiteDataRoot" :"C:\\websites\\sugcon.local\\Website\\Data"
+      }
+    ]
+}

@@ -52,6 +52,20 @@ yo helix pentiahelix SUGCON.2017
 Set-Location ..\
 & ".\AttachDatabases.ps1"
 
+#setup IIS
+$website = "Sugcon.Website"
+$hostName = "local.Sugcon-demo.nl"
+
+New-WebAppPool -Name $website
+New-Website -Name $website -PhysicalPath C:\websites\sugcon.local\Website -HostHeader $hostName
+
+$file = "$env:windir\System32\drivers\etc\hosts"
+if(-not (Get-Content -Path $file -Raw).Contains($hostName))
+{
+	"\r\n127.0.0.1 $hostName" | Add-Content -PassThru $file
+}
+
 #set configuration files in project
+copy-item -Recurse .\project_files\* .\project\ -Force
 
 $VerbosePreference = $oldPreference

@@ -1,0 +1,10 @@
+{
+    "credentials": "c:\\buildagent\\creds\\credentials.json",
+    "packages":[
+        {
+            "packageName": "Sitecore.Full",
+            "version": "8.2.170407",
+            "location": "..\\"  
+        }
+    ]
+}
