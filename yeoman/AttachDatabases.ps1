@@ -1,6 +1,6 @@
 #Requires -RunAsAdministrator
-$destination = ".\Databases"
-Copy-Item  -Path ".\Sitecore\Sitecore 8.2 rev. 170407\Databases\*" -Destination $destination -Verbose
+$destination = "$PSScriptRoot\Databases"
+Copy-Item  -Path "$PSScriptRoot\Sitecore\Sitecore 8.2 rev. 170407\Databases\*" -Destination $destination -Verbose
 
 $dbs = @("Analytics", "Master", "Web", "Core")
 Import-Module SQLPS

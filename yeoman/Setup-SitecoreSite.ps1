@@ -52,6 +52,38 @@ yo helix pentiahelix SUGCON.2017
 Set-Location ..\
 & ".\AttachDatabases.ps1"
 
+#setup IIS
+$website = "Sugcon.Website"
+$hostName = "local.Sugcon-demo.nl"
+
+Remove-WebAppPool -Name $website
+New-WebAppPool -Name $website -Force
+
+if(-not (Test-Path -Path "C:\websites\sugcon.local\Website"))
+{
+    mkdir C:\websites\sugcon.local\Website
+}
+
+if((Get-Website -Name Sugcon.Website | measure | Select-Object -ExpandProperty Count) -gt 0)
+{
+    Remove-Website -Name $website
+}
+
+New-Website -Name $website -PhysicalPath C:\websites\sugcon.local\Website -HostHeader $hostName -Force
+
+$file = "$env:windir\System32\drivers\etc\hosts"
+if(-not (Get-Content -Path $file -Raw).Contains($hostName))
+{
+	"`r`n127.0.0.1 $hostName" | Add-Content -PassThru $file
+}
+
 #set configuration files in project
+copy-item -Recurse $PSScriptRoot\project_files\* $PSScriptRoot\project\ -Force
+
+Set-Location $PSScriptRoot\project
+npm install
+& "$PSScriptRoot\nuget.exe" restore
+& "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe"
+gulp setup
 
 $VerbosePreference = $oldPreference
